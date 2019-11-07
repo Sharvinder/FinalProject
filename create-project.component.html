@@ -1,0 +1,82 @@
+<button class="btn btn-primary" data-toggle="modal" data-target="#addProjectForm" style="text-align: center;">Create
+    project</button>
+<div class="modal" tabindex="-1" role="dialog" id="addProjectForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            </div>
+            <br>
+            <div class="modal-body">
+                <form class="form-group">
+                    <label for="name">Client Name : </label>
+                    <input type="text" [(ngModel)]="clientName" class="form-control"
+                        [ngModelOptions]="{standalone: true}"><br>
+
+                    <label for="name">Project Name : </label>
+                    <input type="text" [(ngModel)]="proName" class="form-control"
+                        [ngModelOptions]="{standalone: true}"><br>
+
+                    <label for="name" style="font-weight: bold;">Technologies </label>
+                    <select [(ngModel)]="technology" [(ngModel)]="Name" class="form-control"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let technology of technologiesList"> {{ technology.technology }} </option>
+                    </select>
+                    <br>
+
+                    <label for="name" style="font-weight: bold;">Duration : </label>
+                    <input type="text" [(ngModel)]="designation" class="form-control"
+                        [ngModelOptions]="{standalone: true}">
+                    <br>
+
+                    <label for="name" style="font-weight: bold;">Priority </label>
+                    <select [(ngModel)]="priority" class="form-control" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let priority of priorityList"> {{ priority.priority }} </option>
+
+                    </select>
+
+                    <br>
+                    <label for="name" style="font-weight: bold;">City </label>
+                    <select [(ngModel)]="city" [(ngModel)]="Name" class="form-control"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let city of citiesList"> {{ city.city }} </option>
+                    </select>
+                    <br>
+
+
+                    <br>
+                    <label for="name" style="font-weight: bold;">Country </label>
+                    <select [(ngModel)]="country" class="form-control" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let country of countryList"> {{ country.country }} </option>
+                    </select>
+                    <br>
+
+                    <label for="name"> Start Date : </label>
+                    <input type="date" [(ngModel)]="startDate" class="form-control"
+                        [ngModelOptions]="{standalone: true}">
+                    <label for="name"> End Date : </label>
+                    <input type="date" [(ngModel)]="endDate" class="form-control" [ngModelOptions]="{standalone: true}">
+                    <label for="name" style="font-weight: bold;">Description </label>
+                    <input type="text" [(ngModel)]="description " class="form-control"
+                        [ngModelOptions]="{standalone: true}">
+
+
+
+                    <div class="modal-footer">
+                        <button (click)="def()" type="button" class="btn btn-primary" style="font-weight: bold">Create
+                            project</button>
+                        <button (click)="abc()" type="button" class="btn btn-primary" style="font-weight: bold;">Save
+                            changes</button>
+                        <button type="reset" class="btn btn-primary" style="font-weight:bold; ">Reset</button>
+                    </div>
+
+                </form>
+                <br>
+
+            </div>
+        </div>
