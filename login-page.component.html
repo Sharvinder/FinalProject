@@ -1,0 +1,73 @@
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left col-md-6">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">LOG IN</h5>
+            <form class="form-signin">
+              <div class="form-group" [class.has-error]="fullNameControl.invalid && fullNameControl.touched"
+                [class.has-error]="fullNameControl.valid" [class.has-error]="fullNameControl.untouched"
+                [class.has-success]="fullNameControl.valid">
+
+                <label for="inputUserame" style="text-align:center;">Username</label>
+                <div class="input-group">
+                  <span class=input-add-on><i class="material-icons"
+                      style="font-size:36px; margin-top:2px">person_add</i></span>
+
+                  <input type="text" id="inputUserame" class="form-control" name="inputUserame"
+                    [(ngModel)]="inputUserame" placeholder="Enter the username" style="text-align: center" required
+                    #fullNameControl="ngModel">
+
+                  <span *ngIf="fullNameControl.invalid && fullNameControl.touched">
+                    name is required</span>
+                </div>
+              </div>
+
+              <div class="form-group abc" [class.has-error]="EmailControl.invalid && EmailControl.touched"
+                [class.has-success]="EmailControl.valid">
+
+                <label for="inputEmail" style="text-align: center">Email Address</label>
+                <div class="input-group">
+                  <span class=input-add-on><i class="material-icons"
+                      style="font-size:36px; margin-top:2px">email</i></span>
+
+                  <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="inputEmail" required
+                    type="email" class="form-control" placeholder="Enter the Email address" id="inputEmail"
+                    [(ngModel)]="inputEmail" style="text-align: center" #EmailControl="ngModel">
+                  <span *ngIf="EmailControl.invalid && EmailControl.touched">
+                    email is required</span>
+                </div>
+              </div>
+
+              <hr>
+              <div class="form-group" [class.has-error]="passwordControl.invalid && passwordControl.touched"
+                [class.has-success]="passwordControl.valid">
+
+                <label for="inputPassword" style="text-align:center">Password</label>
+                <div class="input-group">
+
+
+                  <span class=input-add-on><i class="material-icons"
+                      style="font-size:30px; margin-top:2px;">lock</i></span>
+
+                  <input type="text" class="form-control" id="password" name="password" style="text-align: center"
+                    [(ngModel)]="password" [ngModelOptions]="{standalone: true}" #passwordControl="ngModel"
+                    placeholder="Enter the Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                </div>
+              </div>
+              <hr>
+
+              <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="button">Log
+                  in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
