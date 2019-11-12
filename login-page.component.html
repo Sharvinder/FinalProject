@@ -7,62 +7,71 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">LOG IN</h5>
-            <form class="form-signin">
-              <div class="form-group" [class.has-error]="fullNameControl.invalid && fullNameControl.touched"
-                [class.has-error]="fullNameControl.valid" [class.has-error]="fullNameControl.untouched"
-                [class.has-success]="fullNameControl.valid">
-
-                <label for="inputUserame" style="text-align:center;">Username</label>
-                <div class="input-group">
-                  <span class=input-add-on><i class="material-icons"
-                      style="font-size:36px; margin-top:2px">person_add</i></span>
-
-                  <input type="text" id="inputUserame" class="form-control" name="inputUserame"
-                    [(ngModel)]="inputUserame" placeholder="Enter the username" style="text-align: center" required
-                    #fullNameControl="ngModel">
-
-                  <span *ngIf="fullNameControl.invalid && fullNameControl.touched">
-                    name is required</span>
+            <form class="form-signin" [formGroup]="loginForm">
+              
+              <!--username-->
+              <div class="form-row mb-4">
+                <div class="col">
+                  <small class="form-text text-muted" style="text-align:center; font-size:15px;">
+                    User Name
+                  </small>
+                  <input type="text" id="inputUserame" class="form-control" 
+                    placeholder="Enter the username" style="text-align: center" formControlName="firstNameValidator"
+                    [class.is-invalid]="getFirstName.invalid && getFirstName.touched">
+                  <div *ngIf="getFirstName.invalid && (getFirstName.touched || getFirstName.dirty)">
+                    <small *ngIf="getFirstName.errors?.required" class="text-danger">
+                      User name is required
+                    </small>
+                    <small *ngIf="getFirstName.errors?.minlength" class="=text-danger">
+                      User name must consist atleast 4 characters
+                    </small>
+                  </div>
                 </div>
               </div>
-
-              <div class="form-group abc" [class.has-error]="EmailControl.invalid && EmailControl.touched"
-                [class.has-success]="EmailControl.valid">
-
-                <label for="inputEmail" style="text-align: center">Email Address</label>
-                <div class="input-group">
-                  <span class=input-add-on><i class="material-icons"
-                      style="font-size:36px; margin-top:2px">email</i></span>
-
-                  <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="inputEmail" required
-                    type="email" class="form-control" placeholder="Enter the Email address" id="inputEmail"
-                    [(ngModel)]="inputEmail" style="text-align: center" #EmailControl="ngModel">
-                  <span *ngIf="EmailControl.invalid && EmailControl.touched">
-                    email is required</span>
+              
+              <!--email-->
+              <div class="form-row mb-4">
+                <div class="col">
+                  <small class="form-text text-muted" style="text-align:center;font-size:15px;">
+                    Email Address
+                  </small>
+                  <input type="email" id="inputEmail" required class="form-control"
+                    placeholder="Enter the Email address" style="text-align: center;" formControlName="emailValidator"
+                    [class.is-invalid]="getEmail.invalid && getEmail.touched">
+                  <div *ngIf="getEmail.invalid && (getEmail.touched || getEmail.dirty)">
+                    <small *ngIf="getEmail.errors?.required" class="text-danger">
+                      Email is required
+                    </small>
+                    <small *ngIf="getEmail.errors?.pattern" class="text-danger">
+                      Email must be of required pattern
+                    </small>
+                  </div>
                 </div>
               </div>
-
-              <hr>
-              <div class="form-group" [class.has-error]="passwordControl.invalid && passwordControl.touched"
-                [class.has-success]="passwordControl.valid">
-
-                <label for="inputPassword" style="text-align:center">Password</label>
-                <div class="input-group">
-
-
-                  <span class=input-add-on><i class="material-icons"
-                      style="font-size:30px; margin-top:2px;">lock</i></span>
-
+              
+              <!--password-->
+              <div class="form-row mb-4">
+                <div class="col">
+                  <small class="form-text text-muted " style="text-align:center; font-size:15px;">
+                    Password
+                  </small>
                   <input type="text" class="form-control" id="password" name="password" style="text-align: center"
-                    [(ngModel)]="password" [ngModelOptions]="{standalone: true}" #passwordControl="ngModel"
-                    placeholder="Enter the Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    placeholder="Enter the Password" formControlName="passwordValidator"
+                    [class.is-invalid]="getPassword.invalid && getPassword.touched">
+                </div>
+                <div *ngIf="getPassword.invalid && (getPassword.touched || getPassword.dirty)">
+                  <small *ngIf="getPassword.errors?.required" class="text-danger">
+                    Password is required
+                  </small>
+                  <small *ngIf="getPassword.errors?.pattern" class="text-danger">
+                    Password must be of required pattern
+                  </small>
                 </div>
               </div>
-              <hr>
-
+              
               <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="button">Log
-                  in</button>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" 
+                id="button">Log in</button>
               </div>
             </form>
           </div>
